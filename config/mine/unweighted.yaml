@@ -1,0 +1,35 @@
+
+data:
+  train:
+    images_path: "datasets/coco_strawberries/images/train"
+    annotations_path: "datasets/coco_strawberries/annotations/instances_train.json"
+  val:
+    images_path: "datasets/coco_strawberries/images/val"
+    annotations_path: "datasets/coco_strawberries/annotations/instances_val.json"
+
+model:
+  model_type: faster_rcnn
+  pretrained: None
+  num_classes: 6
+
+training:
+  epochs: 200
+  batch_size: 8
+  accumulate_steps: 3
+
+  shuffle: True
+  num_workers: 4
+
+  device: gpu
+
+  optimizer:
+    learning_rate: 0.005
+    momentum: 0.9
+    weight_decay: 0.0005
+
+validation:
+  batch_size: 4
+  metrics: 
+    - mAP
+    - iou
+

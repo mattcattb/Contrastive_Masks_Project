@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FH Val Mask Gen",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/gen_masks.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--dataset_dir", "/media/mattyb/UBUNTU 22_0/datasets/imagenet_strawberries/images/val",
+                "--output_dir", "/media/mattyb/UBUNTU 22_0/datasets/imagenet_strawberries/masks",
+                "--mask_type", "fh",
+                "--experiment_name", "val"
+            ]
+        },
+        {
+            "name": "PATCH Val Mask Gen",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/gen_masks.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--dataset_dir", "/media/mattyb/UBUNTU 22_0/datasets/imagenet_strawberries/images/val",
+                "--output_dir", "/media/mattyb/UBUNTU 22_0/datasets/imagenet_strawberries/masks",
+                "--mask_type", "patch",
+                "--experiment_name", "val"
+            ]
+        },        
+        {
+            "name": "SAM Val Mask Gen",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/gen_masks.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--dataset_dir", "/media/mattyb/UBUNTU 22_0/datasets/imagenet_strawberries/images/val",
+                "--output_dir", "/media/mattyb/UBUNTU 22_0/datasets/imagenet_strawberries/masks",
+                "--mask_type", "sam",
+                "--experiment_name", "val"
+            ]
+        },
+        {
+            "name": "BYOL main traing",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/detconb_main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--cfg", "/media/mattyb/UBUNTU 22_0/Contrastive_Masks_Project/config/detcon/debug_train.yaml",
+            ]
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+
+data:
+  train:
+    images_path: "/media/mattyb/UBUNTU 22_0/datasets/coco_strawberries/images/train"
+    annotations_path: "/media/mattyb/UBUNTU 22_0/datasets/coco_strawberries/annotations/train_anno.json"
+  val:
+    images_path: "/media/mattyb/UBUNTU 22_0/datasets/coco_strawberries/images/val"
+    annotations_path: "/media/mattyb/UBUNTU 22_0/datasets/coco_strawberries/annotations/val_anno.json"
+
+model:
+  model_type: faster_rcnn
+  pretrained: Default
+  num_classes: 6
+
+training:
+  epochs: 1
+  batch_size: 4
+
+  shuffle: True
+  num_workers: 4
+
+  device: gpu
+
+  optimizer:
+    learning_rate: 0.005
+    momentum: 0.9
+    weight_decay: 0.0005
+
+validation:
+  batch_size: 4
+  metrics: 
+    - mAP
+    - iou
+
