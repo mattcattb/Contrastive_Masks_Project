@@ -61,6 +61,23 @@ class SAMMaskGenerator(MaskGenerator):
         self.sam_model = FastSAM(model_path)
 
     def create_mask(self, image_path:str):
+        """
+            Create the masks using the sam_model.
+            
+            all_results:
+            segmentation - [np.ndarray] - the mask with (W, H) shape, and bool type
+            area - [int] - the area of the mask in pixels
+            bbox - [List[int]] - the boundary box of the mask in xywh format
+            predicted_iou - [float] - the model's own prediction for the quality of the mask
+            point_coords - [List[List[float]]] - the sampled input point that generated this mask
+            stability_score - [float] - an additional measure of mask quality
+            crop_box - List[int] - the crop of the image used to generate this mask in xywh format
+            
+            returns:
+            (h,w) mask of each mask
+        
+        """
+        
         all_results = self.sam_model(image_path, conf=self.conf, iou=self.iou, retina_masks=self.retina_masks)
         prompt_process = FastSAMPrompt(image_path, results=all_results, device='cpu')
         ann = prompt_process.everything_prompt()
